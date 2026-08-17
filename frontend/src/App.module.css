@@ -1,0 +1,24 @@
+.header {
+  margin-bottom: var(--space-6);
+}
+
+.title {
+  font-size: var(--font-xl);
+  font-weight: 700;
+}
+
+.subtitle {
+  font-size: var(--font-sm);
+  color: var(--color-muted);
+  margin-top: 2px;
+}
+
+.errorBanner {
+  padding: var(--space-3) var(--space-4);
+  background-color: var(--color-danger-bg);
+  border: 1px solid #fecaca;
+  color: var(--color-danger);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-5);
+  font-size: var(--font-sm);
+}

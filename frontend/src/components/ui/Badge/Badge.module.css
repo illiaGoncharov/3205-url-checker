@@ -1,0 +1,42 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: var(--font-xs);
+  font-weight: 600;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: currentColor;
+}
+
+/* Цвет и фон по тону */
+.muted {
+  color: var(--color-muted);
+  background-color: #f1f2f4;
+}
+
+.primary {
+  color: var(--color-primary);
+  background-color: #eef1ff;
+}
+
+.success {
+  color: var(--color-success);
+  background-color: var(--color-success-bg);
+}
+
+.warning {
+  color: var(--color-warning);
+  background-color: var(--color-warning-bg);
+}
+
+.danger {
+  color: var(--color-danger);
+  background-color: var(--color-danger-bg);
+}
