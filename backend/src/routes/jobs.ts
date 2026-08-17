@@ -3,6 +3,7 @@ import { Router } from "express";
 // Генерируем UUID
 import { v4 as uuidv4 } from "uuid";
 import { setJob, getAllJobs, getJob } from "../store";
+import { processJob } from "../services/processJob";
 import type { Job, JobSummary } from "../types";
 
 const router = Router();
@@ -35,6 +36,7 @@ router.post("/", (req, res) => {
   };
 
   setJob(job);
+  void processJob(job.id);
   res.status(201).json({ jobId: job.id });
 });
 
