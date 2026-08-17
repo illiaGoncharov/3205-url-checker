@@ -47,7 +47,7 @@ export async function processJob(jobId: string): Promise<void> {
       url.httpStatus = res.status;
     } catch (error) {
       url.status = "error";
-      url.error = error instanceof Error ? error.message : "Unknown error";
+      url.error = error instanceof Error ? error.message : "Неизвестная ошибка";
     } finally {
       clearTimeout(timeoutId);
     }

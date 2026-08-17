@@ -7,7 +7,6 @@ export async function mapPool<T, R>(
 ): Promise<R[]> {
   // Место под результаты всех задач
   const results = new Array<R>(items.length);
-
   // Номер следующей задачи в очереди (с 0)
   let next = 0;
 

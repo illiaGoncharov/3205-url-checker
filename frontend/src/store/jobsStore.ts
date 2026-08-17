@@ -15,6 +15,7 @@ interface JobsState {
   selectJob: (id: string) => void; 
   cancelJob: (id: string) => Promise<void>; 
   setActiveJob: (job: Job | null) => void; 
+  syncJobInList: (job: Job) => void;
 }
 
 // Реализация состояния
@@ -87,5 +88,21 @@ export const useJobsStore = create<JobsState>()((set, get) => ({
   // Положить актуальные данные задания
   setActiveJob: (job: Job | null) => {
     set({ activeJob: job });
+  },
+
+  // Пересчитать карточку в левом списке из свежих данных задания (вызывает polling)
+  syncJobInList: (job: Job) => {
+    const summary = {
+      id: job.id,
+      createdAt: job.createdAt,
+      status: job.status,
+      total: job.urls.length,
+      success: job.urls.filter((u) => u.status === "success").length,
+      error: job.urls.filter((u) => u.status === "error").length,
+    };
+
+    set({
+      jobs: get().jobs.map((j) => (j.id === job.id ? summary : j)),
+    });
   },
 }));

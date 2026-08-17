@@ -2,10 +2,14 @@ import { CreateJobForm } from './components/CreateJobForm';
 import { JobsList } from './components/JobsList';
 import { JobDetails } from './components/JobDetails';
 import { useJobsStore } from './store/jobsStore';
+import { useJobPolling } from './hooks/useJobPolling';
 import styles from './App.module.css';
 
 export default function App() {
   const error = useJobsStore((state) => state.error);
+
+  // Следит за activeJobId и сам обновляет карточку раз в секунду
+  useJobPolling();
 
   return (
     <div className="container">

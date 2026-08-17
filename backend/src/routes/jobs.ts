@@ -14,7 +14,7 @@ router.post("/", (req, res) => {
 
   // Иначе .map/.trim упадут
   if (!Array.isArray(rawUrls)) {
-    return res.status(400).json({ error: "urls must be a non-empty array" });
+    return res.status(400).json({ error: "urls должен быть массивом строк" });
   }
 
   // Строки, trim, пустые выкинуть
@@ -24,7 +24,7 @@ router.post("/", (req, res) => {
     .filter(Boolean);
 
   if (urls.length === 0) {
-    return res.status(400).json({ error: "urls must be a non-empty array" });
+    return res.status(400).json({ error: "urls должен быть не пустым массивом" });
   }
 
   // Создаем задание
