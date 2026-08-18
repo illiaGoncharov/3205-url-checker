@@ -23,6 +23,14 @@ npm run dev
 Бэк: http://localhost:3000  
 Фронт: http://localhost:5173
 
+Или через Docker, одной командой (нужен запущенный Docker Desktop):
+
+```bash
+docker compose up --build
+```
+
+Порты те же — бэк на 3000, фронт на 5173. Внутри два образа: бэк собирается в обычный node-контейнер, фронт — сборка Vite, которую потом раздаёт nginx
+
 ## Что умеет API
 
 - `POST /api/jobs` — `{ "urls": ["https://..."] }`, в ответе `jobId`
