@@ -21,9 +21,15 @@
   align-items: flex-start;
   flex-wrap: wrap;
   gap: var(--space-3);
-  margin-bottom: var(--space-4);
+  margin-bottom: var(--space-3);
   padding-bottom: var(--space-3);
   border-bottom: 1px solid var(--color-border);
+}
+
+.titleRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
 }
 
 .title {
@@ -31,10 +37,25 @@
   font-weight: 600;
 }
 
+.subHeader {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-top: var(--space-1);
+}
+
 .timestamp {
   font-size: var(--font-xs);
   color: var(--color-muted);
-  margin-top: 2px;
+}
+
+.progress {
+  font-size: var(--font-xs);
+  color: var(--color-muted);
+  background-color: var(--color-bg);
+  padding: 2px var(--space-2);
+  border-radius: var(--radius-sm);
+  font-weight: 500;
 }
 
 .cancelButton {
@@ -45,6 +66,79 @@
   border-radius: var(--radius-sm);
   font-size: var(--font-xs);
   font-weight: 600;
+}
+
+.cancelButton:hover {
+  background-color: #fee2e2;
+}
+
+/* Прогресс-бар */
+.progressBar {
+  display: flex;
+  height: 6px;
+  width: 100%;
+  background-color: var(--color-bg);
+  border-radius: 999px;
+  overflow: hidden;
+  margin-bottom: var(--space-4);
+  border: 1px solid var(--color-border);
+}
+
+.progressSegment {
+  height: 100%;
+  transition: width 0.3s ease;
+}
+
+.progressSuccess {
+  background-color: var(--color-success);
+}
+
+.progressError {
+  background-color: var(--color-danger);
+}
+
+.progressInProgress {
+  background-color: var(--color-primary);
+}
+
+/* Табы-фильтры */
+.filterRow {
+  display: flex;
+  gap: var(--space-2);
+  margin-bottom: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.filterButton {
+  padding: 4px var(--space-3);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  background-color: var(--color-surface);
+  color: var(--color-muted);
+  font-size: var(--font-xs);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.filterButton:hover {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+}
+
+.filterButtonActive {
+  background-color: var(--color-bg);
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+  font-weight: 600;
+}
+
+.filterEmpty {
+  text-align: center;
+  color: var(--color-muted-light);
+  font-size: var(--font-xs);
+  padding: var(--space-5) var(--space-2);
 }
 
 .urlList {
