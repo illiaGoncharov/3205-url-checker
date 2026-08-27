@@ -1,4 +1,11 @@
 node_modules/
 dist/
 .env
+.env.local
 .DS_Store
+*.log
+coverage/
+.vscode/
+.cursor/
+DRILL_42.md
+CURSOR_GUIDE.md

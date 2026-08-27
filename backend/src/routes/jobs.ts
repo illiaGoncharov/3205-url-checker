@@ -17,10 +17,14 @@ router.post("/", (req, res) => {
     return res.status(400).json({ error: "urls должен быть массивом строк" });
   }
 
-  // Строки, trim, пустые выкинуть
+  // Строки, trim, автодобавление https://, пустые выкинуть
   const urls = rawUrls
     .filter((url): url is string => typeof url === "string")
-    .map((url) => url.trim())
+    .map((url) => {
+      const trimmed = url.trim();
+      if (!trimmed) return "";
+      return /^https?:\/\//i.test(trimmed) ? trimmed : `https://${trimmed}`;
+    })
     .filter(Boolean);
 
   if (urls.length === 0) {

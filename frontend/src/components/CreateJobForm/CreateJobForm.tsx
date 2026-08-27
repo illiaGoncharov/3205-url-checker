@@ -2,6 +2,15 @@ import React, { useState } from 'react';
 import { useJobsStore } from '../../store/jobsStore';
 import styles from './CreateJobForm.module.css';
 
+/**
+ * Нормализует введенный адрес: если протокол не указан, добавляет https://
+ */
+function normalizeUrl(raw: string): string {
+  const trimmed = raw.trim();
+  if (!trimmed) return '';
+  return /^https?:\/\//i.test(trimmed) ? trimmed : `https://${trimmed}`;
+}
+
 export function CreateJobForm() {
   const [text, setText] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -13,10 +22,10 @@ export function CreateJobForm() {
     e.preventDefault();
     setFormError(null);
 
-    // Парсим введенные строки
+    // Парсим введенные строки и нормализуем протокол
     const urls = text
       .split('\n')
-      .map((u) => u.trim())
+      .map(normalizeUrl)
       .filter(Boolean);
 
     if (urls.length === 0) {
