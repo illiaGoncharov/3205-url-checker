@@ -1,0 +1,9 @@
+# Исключения для индексации Cursor
+node_modules/
+dist/
+coverage/
+*.log
+.DS_Store
+.env
+.env.local
+.env.*.local
