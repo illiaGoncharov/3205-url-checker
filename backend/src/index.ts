@@ -2,18 +2,19 @@
 import express from "express";
 import cors from 'cors';
 import jobsRouter from './routes/jobs';
+import { getConfig } from './config';
 
 const app = express();
-const PORT = process.env.PORT ?? 3000;
+const config = getConfig();
 
 // Регистрируем middleware и роуты
-app.use(cors({ origin: 'http://localhost:5173' }));
+app.use(cors({ origin: config.corsOrigin }));
 // Парсим JSON-тело запроса
 app.use(express.json());
 // Регируем роуты
 app.use('/api/jobs', jobsRouter);
 
 // Запускаем сервер
-app.listen(PORT, () => {
-  console.log(`Backend запущен на http://localhost:${PORT}`);
+app.listen(config.port, () => {
+  console.log(`Backend запущен на http://localhost:${config.port}`);
 });
