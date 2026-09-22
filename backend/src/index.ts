@@ -3,6 +3,7 @@ import express from "express";
 import cors from 'cors';
 import jobsRouter from './routes/jobs';
 import { getConfig } from './config';
+import healthRouter from "./routes/health";
 
 const app = express();
 const config = getConfig();
@@ -11,8 +12,10 @@ const config = getConfig();
 app.use(cors({ origin: config.corsOrigin }));
 // Парсим JSON-тело запроса
 app.use(express.json());
+
 // Регируем роуты
 app.use('/api/jobs', jobsRouter);
+app.use('/api/health', healthRouter);
 
 // Запускаем сервер
 app.listen(config.port, () => {
